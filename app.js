@@ -79,6 +79,11 @@ $('#list').on('click', '.delete-button', function(event) {
   })
 });
 
+//another way
+
+// deleteRequest.done(function(response){
+//   item.hide();
+// })
 
 
 // item = { description: 'a new item', id: 9000, completed: false}
