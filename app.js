@@ -39,7 +39,8 @@ $('#add-form').on('submit', function(event) {
   //add to check list with out add function
 creationRequest.done(function(itemDataFromServer) {
   addItemToPage(itemDataFromServer)
-	});
+	 });
+  $('input#create').val('');
 
 });
 
@@ -54,16 +55,29 @@ var updateRequest = $.ajax({
   data: { completed: !isItemCompleted }
 });
 updateRequest.done(function(itemData) {
-  if (itemData.completed) {
-    item.addClass('completed')
-  } else {
-    item.removeClass('completed')
-  }
+    if (itemData.completed) {
+      item.addClass('completed')
+    } else {
+     item.removeClass('completed')
+    }
+  });
 });
+
+
+$('#list').on('click', '.delete-button', function(event) {
+  
+  var item = $(event.target).parent();
+  var itemId = item.attr('data-id');
+  //alert('trying to delete an item with id ' + itemId);
+  var deleteRequest = $.ajax({
+    type: 'DELETE',
+    url: "https://listalous.herokuapp.com/lists/JoannaIlling/items/" + itemId,
+    success: function(result) {
+      //alert('successful delete');
+      item.remove();
+    }
+  })
 });
-
-
-
 
 
 
