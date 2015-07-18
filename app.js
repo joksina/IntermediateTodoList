@@ -63,7 +63,20 @@ updateRequest.done(function(itemData) {
 });
 
 
-
+$('#list').on('click', '.delete-button', function(event) {
+	
+	var item = $(event.target).parent();
+	var itemId = item.attr('data-id');
+	//alert('trying to delete an item with id ' + itemId);
+	var deleteRequest = $.ajax({
+		type: 'DELETE',
+		url: "https://listalous.herokuapp.com/lists/JoannaIlling/items/" + itemId,
+		success: function(result) {
+			//alert('successful delete');
+			item.remove();
+		}
+	})
+});
 
 
 
