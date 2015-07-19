@@ -71,7 +71,7 @@ $('#list').on('click', '.delete-button', function(event) {
   //alert('trying to delete an item with id ' + itemId);
   var deleteRequest = $.ajax({
     type: 'DELETE',
-    url: "https://listalous.herokuapp.com/lists/JoannaIlling/items/" + itemId,
+    url: "https://listalous.herokuapp.com/lists/joksina/items/" + itemId,
     success: function(result) {
       //alert('successful delete');
       item.remove();
