@@ -40,7 +40,7 @@ $('#add-form').on('submit', function(event) {
 creationRequest.done(function(itemDataFromServer) {
   addItemToPage(itemDataFromServer)
 	});
-
+$('input#create').val(''); //This is to clear the list
 });
 
 // Alert the user if they are trying to add an item
@@ -62,21 +62,24 @@ updateRequest.done(function(itemData) {
 });
 });
 
-
 $('#list').on('click', '.delete-button', function(event) {
-	
-	var item = $(event.target).parent();
-	var itemId = item.attr('data-id');
-	//alert('trying to delete an item with id ' + itemId);
-	var deleteRequest = $.ajax({
-		type: 'DELETE',
-		url: "https://listalous.herokuapp.com/lists/JoannaIlling/items/" + itemId,
-		success: function(result) {
-			//alert('successful delete');
-			item.remove();
-		}
-	})
+  
+  var item = $(event.target).parent();
+  var itemId = item.attr('data-id');
+ // alert('trying to delete an item with id ' + itemId);
+  var deleteRequest = $.ajax({
+    type: 'DELETE',
+    url: "https://listalous.herokuapp.com/lists/JoannaIlling/items/" + itemId,
+    success: function(result) {
+      //alert('successful delete');
+      item.remove();
+    }
+  })
 });
+
+//daniela.grossmann@gmail.com
+//danigro77
+
 
 
 
